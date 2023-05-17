@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <input type="text" /> 아이디를 입력하세요.
+    
+        <button id="login">로그인</button>
+        <button id="dored" onclick="a()">빨개져라</button>
+    </div>
+</body>
+<script>
+    var loginBt = document.querySelector("#login");
+    loginBt.onclick = b;
+    document.querySelector("#dored").onclick = a;
+    function a() {
+        var mainElement = document.querySelector(".main");
+        mainElement.style.color ="red";
+        
+    }
+    function b() {
+        var fake = document.querySelector("#login");
+        fake.style.color ="blue";
+    }
+    
+</script>
+</html>

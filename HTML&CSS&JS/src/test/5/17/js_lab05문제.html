@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *{
+            margin:  10 ;
+            padding: 10; 
+        }
+        body{ 
+            font-family: '맑은 고딕', 'Malgun Gothic','돋움', Helvetica,sans-serif;
+        }
+        .container{ 
+            display: flex; 
+            justify-content: center;
+            background: #c5e9fe;
+        }
+        .wrap-visual { 
+            height: 30vw;
+            width: 70%;
+            display: grid;   
+            
+        } 
+        #menu {
+            display: flex;
+            flex-direction: row; 
+            justify-content: right;
+        }
+        ul {
+            list-style-type: none ;
+            height: 27px;
+        }
+        li{
+            float: left;
+            width:100px ; 
+            height:22px; 
+            margin-right:2px ; 
+        }
+        li:hover, #next{
+            cursor: pointer;
+        }
+        img{
+            margin: 0 auto;
+        }
+        #next {
+            background:inherit;
+            border: 0; 
+        }
+        /* 
+           다음 버튼이 클릭 되면 
+           id = first 인 element가 보이지 않고 
+           id = second 인 element가 보이도록 구현하세요 
+           background 색은   #fcf5d4 로 변경하세요. 
+
+           다시 다음 버튼을 클릭되면 
+           id = second 인 element가 보이지 않고 
+           id = first 인 element가보이도록 구현하세요 
+           background 색은  #c5e9fe 로 변경하세요. 
+        */
+
+        #second{
+            display: none;
+        }
+    </style>
+    <title> 카카오 클라우드 개발자반 은행 </title>
+</head>
+<body>
+    <div class="container" >
+    <div class="wrap-visual"  > 
+        <div id="menu"> 
+            <nav>  
+                <ul class="menu">
+                    <li>메뉴1</li>
+                    <li>메뉴2</li>
+                    <li>메뉴3</li>
+                </ul>
+            </nav>
+        </div> 
+        <div id="first" > 
+            <strong><img src="https://www.kbstar.com/2018/img/visual/visual_section89_tit01.png" alt="개인고객은 물론, 개인사업자까지 누구나 타행이체 수수료 면제"></strong>
+            <span><img src="https://www.kbstar.com/2018/img/visual/visual_section89_tit02.png" alt="KB스타뱅킹·인터넷뱅킹으로 타행이체, 자동이체 수수료 걱정 끝"></span>
+        </div>
+        <div id="second" > 
+            <strong><img src="https://www.kbstar.com/2018/img/visual/visual_section100_tit01.png" alt="오늘은 취준, 내일은 출근 2023 제1차 KB굿잡 우수기업 취업박람회"></strong>
+            <span><img src="https://www.kbstar.com/2018/img/visual/visual_section100_tit02.png" alt="2023.5.22(월)~5.23(화), 10:00~17:00 서울 COEX B홀"></span>
+        </div>
+        <br>
+        <button id="next" onclick = "change()">다음</button>
+    </div>
+    
+</div>    
+     
+</body>
+<script>
+   
+    var cnt = 0;
+    function change() {
+        if(cnt == 0) {
+            document.querySelector('#first').style.display = "none";
+            document.querySelector('#second').style.display = "block";
+            document.querySelector('.container').style.background = "#fcf5d4"
+            cnt = 1;
+        }
+        else {
+            document.querySelector('#second').style.display = "none";
+            document.querySelector('#first').style.display = "block";
+            document.querySelector('.container').style.background = "#c5e9fe"
+            cnt = 0;
+        }
+    }
+</script>
+</html>
+
+ 

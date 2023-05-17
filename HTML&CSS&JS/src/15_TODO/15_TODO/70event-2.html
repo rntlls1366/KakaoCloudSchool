@@ -8,17 +8,17 @@
 </head>
 <body>
 	<ul>
-		<li><a href="#"  //TODO  ="changeBg('green')">Green</a></li>
+		<li><a href="#" onclick="changeBg('green')">Green</a></li>
 		<li><a href="#" onclick="changeBg('orange')">Orange</a></li>
 		<li><a href="#" onclick="changeBg('purple')">Purple</a></li>
 	</ul>		
 	<div id="result"></div>
 	
 	<script>
-		//TODO {
+		function changeBg(color) {
 			var result = document.querySelector('#result');
 			result.style.backgroundColor = color;
 		}
 	</script>
 </body>
-</html>  
+</html>
