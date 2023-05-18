@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    window.onload = () => {     //html문서가 전부 로딩 됐을때 아래 함수를 실행함. 따라서 js가 body보다 위에 있을때 사용 가능
+        var bt = document.querySelector("#a");
+        bt.onclick = () => { alert("문서 로딩 완료"); }
+    }
+</script>
+<body>
+    <p>결과 메세지 시작</p>
+    <div id="result">   </div>
+    <p>끝</p>
+    <button id = "a">버튼</button>
+</body>
+<script>
+    var num = prompt("숫자 입력 ㄱ");
+    if(num > 100) document.querySelector("#result").innerHTML = "100보다 크다.";
+    else document.querySelector("#result").innerHTML = "100보다 작거나 같다.";
+</script>
+</html>

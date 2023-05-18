@@ -1,0 +1,72 @@
+<!-- 문제 : 피연산자1과 피연산자2를 입력하고 
+4개의 연산자 버튼 중 하나를 클릭하면 
+연산 결과가 결과값 text 출력된다.  -->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8S">
+
+<style>
+    input[type="text"]  {
+        text-align:right;
+   }
+</style> 
+
+<title>계산기</title>
+</head>
+
+<body>
+<h1>계산기</h1>
+<b> 아래 항목에 숫자를 입력하세요 </b>
+<form name="theForm"  >
+<table >
+<tr> 
+<td>피연산자1</td>
+<td  > <input type="text" id="f1"      > </td>
+</tr>
+<tr> 
+<td>피연산자2</td>
+<td> <input type="text"  id="f2"     > </td>
+</tr>
+<tr> 
+<td>결과값 출력</td>
+<td> <input type="text"  id="f3"      > </td>
+</tr>
+<tr> 
+<td>  
+<input type="button"   value="+" class="giho"> 
+<input type="button"   value="-" class="giho"> 
+<input type="button"   value="*" class="giho"> 
+<input type="button"   value="/" class="giho">
+</td>
+</tr> 
+</table> 
+</form>
+</body>
+
+<script>
+
+   var giho = document.querySelectorAll(".giho");
+   var a = document.querySelector("#f1");
+   var b = document.querySelector("#f2");
+   var result = document.querySelector("#f3");
+
+   for(let i = 0; i < giho.length; i++) {
+        giho[i].onclick = () =>  {
+            switch(giho[i].value) {
+                case '+' :  result.value = Number(a.value) +  Number(b.value); break;
+                case '-' :  result.value = Number(a.value) -  Number(b.value); break;
+                case '*' :  result.value = Number(a.value) *  Number(b.value); break;
+                case '/' :  result.value = Number(a.value) /  Number(b.value); break;
+            }
+            
+        }
+        
+   }
+
+   
+   
+</script>
+
+</html>

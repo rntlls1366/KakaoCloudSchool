@@ -20,9 +20,12 @@
             this.name = name;
             this.dept = dept;
         }
+       toString() {
+            return this.name + " and " + this.dept;
+        }
     }
     one = new Human("홍길동", "마케팅");
     two = new Human("김영희", "개발");
-    alert(one.name + one.dept); 
+    document.write(one);
 </script>
 </html>
