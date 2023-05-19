@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            position:relative;
+        }
+    </style>
+</head>
+<body>
+    <button id = "a">클릭하면 버튼이 추가로 생성 innerHtml 방식</button>
+    <div id = "resultA"></div>
+    <button id = "b">클릭하면 버튼이 추가로 생성 자식노드추가 방식</button>
+    <div id = "resultB"></div>
+</body>
+<script>
+    var a = document.querySelector("#a");
+    a.onclick = () => document.getElementById("resultA").innerHTML = "<button>이너 버튼</button>";
+
+    var b = document.querySelector("#b");
+    b.onclick = () => {
+        var newNode = document.createElement("button");
+        var newText = document.createTextNode("자식노드버튼");
+
+        newNode.appendChild(newText);
+        document.getElementById("resultB").appendChild(newNode);
+    }
+    
+</script>
+</html>
