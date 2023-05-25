@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>김준연 자기소개</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="bootstrap.css">
+    <script id="_carbonads_projs" type="text/javascript"
+        src="https://srv.carbonads.net/ads/CKYIE23N.json?segment=placement:bootswatchcom&amp;callback=_carbonads_go"></script>
+    <style>
+        .col-lg-4 {
+            width: 20%;
+            position: static;
+            margin-right: 10px;
+            margin-left: 10px;
+            overflow: auto;
+        }
+
+        .card-body {
+            height: 200px;
+        }
+
+        button {
+            right: 0;
+            bottom: 0;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+            <div class="container">
+                <a href="index.html" class="navbar-brand">KJY</a>
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="now.html">팀 프로젝트</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="now2.html">개인 프로젝트</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="vision.html">비전카드</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a target="_blank" rel="noopener" class="nav-link" href="https://github.com/KJY-kpu"
+                                target='_blank'><i class="bi bi-github"></i> GitHub</a>
+                        </li>
+                        <li class="nav-item">
+                            <a target="_blank" rel="noopener" class="nav-link"
+                                href="https://career.programmers.co.kr/pr/rntlls1366_6130" target='_blank'><i
+                                    class="bi bi-github"></i>
+                                Programmers</a>
+                        </li>
+                    </ul>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="row" style="margin-top: 100px; margin-left: 20px; ">
+            <div class="col-lg-4">
+                <div class="bs-component">
+                    <div class="card text-white bg-success mb-3">
+                        <div class="card-header">완료</div>
+                        <div class="card-body">
+                            <h4 class="card-title">알고리즘 랩스 수료</h4>
+                            <p class="card-text">
+                                (2022/10)
+                                <br />
+                                10-Week Algorithm Mission Care 수료
+                            </p>
+                            <button type="button" class="btn btn-info">Info</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="bs-component">
+                    <div class="card text-white bg-success mb-3">
+                        <div class="card-header">완료</div>
+                        <div class="card-body">
+                            <h4 class="card-title">한이음 ICT 멘토링 공모전</h4>
+                            <p class="card-text">
+                                (2022/10)
+                                <br />
+                                한이음 ICT 멘토링 공모전 본선 1차 진출
+                                <br />
+                            </p>
+                            <button type="button" class="btn btn-info" style="float:right">Info</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="bs-component">
+                    <div class="card bg-light mb-3">
+                        <div class="card-header">진행 중</div>
+                        <div class="card-body">
+                            <h4 class="card-title">카카오 클라우드 스쿨</h4>
+                            <p class="card-text">
+                                (2023/05 ~ )
+                                <br />
+                                카카오 클라우드 스쿨 개발자 양성과정 3기
+                                <br />
+                            </p>
+                            <button type="button" class="btn btn-info" style="float:right">Info</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="bs-component">
+                    <div class="card bg-light mb-3">
+                        <div class="card-header">진행 중</div>
+                        <div class="card-body">
+                            <h4 class="card-title">프로그래머스 내일배움코스</h4>
+                            <p class="card-text">
+                                (2023/05 ~ )
+                                <br />
+                                코딩테스트 실력 UP 패키지 : 문제 풀이 꿀팁과 실전 모의고사 with Java
+                                <br />
+                            </p>
+                            <button type="button" class="btn btn-info" style="float:right">Info</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+</body>
+<script>
+    var lst = document.querySelectorAll("button");
+    for(let i = 0; i < lst.length; i++) {
+        var adderess;
+        lst[i].onclick = () => {
+            switch(i) {
+                case 0 :address = "image/jobs.pdf"; break;
+                case 1 :address = "https://github.com/KPU-Veritas/Tracking-Management-System"; break;
+                case 2 :address = "http://kakaocloudschool.rapa.or.kr/ft/main.do"; break;
+                case 3 :address = "https://drive.google.com/file/d/1tm3Ayscjow6ku80-Lvw4pc9a82qj37DA/view"; break;
+            }
+            window.open(address,  target="_blank");
+
+        }
+    }
+</script>
+
+</html>
