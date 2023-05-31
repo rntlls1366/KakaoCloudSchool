@@ -1,0 +1,9 @@
+{
+    "name" : "홍길동",
+    "major" : "디자인",
+    "grade" : 3,
+    "course" : {
+      "title" : "ajax", 
+      "timePerWeek" : 3
+    }    
+  }

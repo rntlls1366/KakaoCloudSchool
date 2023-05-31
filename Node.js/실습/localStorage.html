@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let students = ["kim", "Lee", "Park"];
+    localStorage.setItem("students", JSON.stringify(students));
+
+    let localData;
+    if(localStorage.getItem("students") === null) {
+        localData = [];
+    }
+    else {
+        localData = JSON.parse(localStorage.getItem("students"));
+    }
+    localData.push("Choi");
+    localStorage.setItem("students", JSON.stringify(localData));
+    console.log(`추가후 students : ${localData}`);
+</script>
+
+</html>

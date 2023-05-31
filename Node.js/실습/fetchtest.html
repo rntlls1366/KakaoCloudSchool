@@ -1,0 +1,20 @@
+<div id="result" > </div>
+
+<script>
+fetch( 'https://jsonplaceholder.typicode.com/users') 
+ .then(response => response.json())  
+ .then(json => {  
+   let output = '';  
+   json.forEach(person => {
+     output += `
+       <p>${person.name}</p>
+       <ul>
+         <li>주소 : ${person.address.city}  ${person.address.street}  ${person.address.suite}</li>
+       </ul>
+       <hr>
+     `;
+   });
+   document.querySelector('#result').innerHTML = output;
+ })
+.catch(error => console.log(error));    
+</script>
