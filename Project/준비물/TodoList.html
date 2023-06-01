@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .todo {
+            margin: 0.5rem;
+            font-size: 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .todo .todo-content {
+            flex: 1;
+            padding: 0.5rem 1rem;
+            border-bottom: 1px dotted #ccc;
+        }
+
+        .todo button {
+            padding: 0.5rem;
+            margin-right: 0.2rem;
+            font-size: 0.8rem;
+            cursor: pointer;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            color: #d8d8d8;
+            opacity: 0.5;
+        }
+        header {
+            margin-left:40%;
+        }
+        form {
+            margin-left:40%;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h1>오늘의 할 일</h1>
+        <button onclick="cl()">스토리지 초기화(임시기능)</button>
+    </header>
+    <form>
+        <input type="text" id="content">
+        <button id="submit">추가</button>
+    </form>
+    <div id="container">
+        <ul id="todo-list">
+        </ul>
+    </div>
+
+</body>
+<script>
+    var content;
+    let contents = [];
+    var arr = [];
+
+    var localData;
+
+    //여기서부터-------------------추가 기능-------------
+    document.querySelector("#submit").onclick = () => {
+        content = document.querySelector("#content").value;
+        if (content == "") { }
+        else if (localStorage.getItem("contents") === null) {
+            localData = [];
+        } else {
+            localData = JSON.parse(localStorage.getItem("contents"));
+        }
+
+        localData.push(content);
+        localStorage.setItem("contents", JSON.stringify(localData));
+    }
+    localData = JSON.parse(localStorage.getItem("contents"));
+    var output = "";
+    
+    for (let i = 0; i < localData.length; i++) {
+        console.log(arr.indexOf(localData[i]));
+        if(arr.indexOf(localData[i]) >= 0) {
+            output += `<div class="todo">
+                <li class="todo-content" id="content${i}" style="background-color:green">${localData[i]}</li>
+                <button class="complete-button" onclick="completeList(${i})">완료</button>
+                <button class="delete-button" onclick="deleteList(${i})">삭제</button>
+            </div>`;
+        }
+        else {
+            output += `<div class="todo">
+                <li class="todo-content" id="content${i}">${localData[i]}</li>
+                <button class="complete-button" onclick="completeList(${i})">완료</button>
+                <button class="delete-button" onclick="deleteList(${i})">삭제</button>
+            </div>`;
+        }
+
+    }
+    //------------------스토리지 초기화 기능-------------
+    function cl() {     
+        localStorage.clear();
+        window.location.reload();
+    }
+
+    //여기서부터--------------삭제 기능------------------
+    
+    function deleteList(num) {
+        localData.splice(num, 1);
+        localStorage.setItem("contents", JSON.stringify(localData));
+        window.location.reload();
+    }
+    // function deleteList(num) {
+    //     var delLi = document.querySelectorAll(".delete-button");
+    //     console.log(delLi.length);
+    // }
+
+    //여기서부터----------------완료 기능------------------
+    
+    function completeList(num) {
+        arr.push(localData[num]);
+        window.location.reload();
+    }
+
+    document.querySelector('#todo-list').innerHTML = output;
+
+
+</script>
+
+</html>

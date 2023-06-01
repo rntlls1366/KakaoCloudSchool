@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        li {
+            float: left;
+            margin-left: 20px;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <h1>일단 메인 화면</h1>
+    </header>
+    <main>
+        <div>
+            <ul>
+                <li>
+                    <div>
+                        <h2>상품 A</h2>
+                        <p>10000</p>
+                        <button id=test name="product" value=0 onclick="addCart(this)">장바구니담기</button>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h2>상품 B</h2>
+                        <p>20000</p>
+                        <button id=test name="product" value=1 onclick="addCart(this)">장바구니담기</button>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <h2>상품 C</h2>
+                        <p>30000</p>
+                        <button id=test name="product" value=2 onclick="addCart(this)">장바구니담기</button>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <hr>
+        <h2>장바구니 목록</h2>
+        <div>
+            <ul id="basket">
+
+            </ul>
+        </div>
+    </footer>
+
+</body>
+
+<script>
+    //------------상품 목록-------------
+    var nameList = ["상품A", "상품B", "상품C"];
+    var priceList = [10000, 20000, 30000];
+    display();
+    //-------------장바구니 추가 기능------------
+    function addCart(bt) {
+        let temp = {
+            name: nameList[bt.value],
+            price: priceList[bt.value],
+            number: parseInt(bt.value),
+            count: parseInt(1),
+        }
+        let box = JSON.stringify(temp);
+        fetch('/addcart', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: box,
+        })
+            .then(console.log)
+            .finally(display());
+    }
+
+    //-------------장바구니 삭제 기능-----------
+    function deleteCart(bt) {
+        let temp = {
+            name: nameList[bt.value],
+            price: priceList[bt.value],
+            number: parseInt(bt.value),
+        }
+        let box = JSON.stringify(temp);
+        console.log("before is " + temp + " after is " + box);
+        fetch('/deletecart', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: box,
+        })
+            .then(console.log)
+            .finally(display());
+    }
+
+    //-------------장바구니 목록 랜더링 기능--------
+    function display() {
+        fetch('/cart')
+            .then(response => response.json())
+            .then(json => {
+                let output = '';
+                json.forEach(product => {
+                    output += `
+                <li>
+                    <div>
+                        <h2>${product.name}</h2>
+                        <p>${product.price}</p>
+                        <p>${product.count}</p>
+                        <button id=test name="product" value=${product.number}
+                            onclick="deleteCart(this)">삭제</button>
+                    </div>
+                </li>
+                `;
+                });
+                document.querySelector('#basket').innerHTML = output;
+            })
+            .catch(error => console.log(error));
+    }
+
+
+
+</script>
+
+</html>
