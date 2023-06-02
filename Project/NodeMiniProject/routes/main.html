@@ -5,73 +5,273 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <style>
-        ul {
-            list-style: none;
+        body,
+        h1,
+        h2,
+        h3,
+        ul,
+        li,
+        p,
+        button,
+        img {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        li {
-            float: left;
-            margin-left: 20px;
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.5;
         }
 
-        footer {
-            position: absolute;
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+        }
+
+        nav {
+            background-color: #555;
+            padding: 10px;
+        }
+
+        nav ul {
+            list-style-type: none;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        .products {
+            margin-bottom: 20px;
+        }
+
+        .products h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .products .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .products .product-list li {
+            width: 250px;
+            margin-bottom: 20px;
+            margin-right: 10px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        .product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .products .cart-product-list {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .products .cart-product-list li {
+            width: 200px;
+            margin-bottom: 20px;
+            margin-right: 10px;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            padding: 20px;
+        }
+
+        .cart-product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .product img {
+            width: 100%;
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        .product h3 {
+            margin-top: 10px;
+        }
+
+        .product p {
+            margin-top: 10px;
+        }
+
+        .price {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .add-to-cart {
+            display: block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #555;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            background-color: #333;
+        }
+
+        .delete-to-cart {
+            display: block;
+            padding: 10px 20px;
+            background-color: #555;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            float: right;
             bottom: 0;
         }
+
+        .delete-to-cart:hover {
+            background-color: #333;
+        }
+
+        .count {}
+
+        .cart-icon {
+            position: relative;
+            display: inline-block;
+            margin-left: 5px;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -7px;
+            right: -7px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20px;
+            height: 20px;
+            background-color: #ff0000;
+            color: #fff;
+            font-size: 12px;
+            border-radius: 50%;
+        }
+
+        .cart-name {
+            font-size: 20px;
+            float: left;
+        }
+
+        .minus-button,
+        .plus-button {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: #ddd;
+            text-align: center;
+
+            cursor: pointer;
+        }
+
+        .cart-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
     </style>
+
     <title>Document</title>
 </head>
 
 <body>
     <header>
-        <h1>일단 메인 화면</h1>
+        <h1>포켓몬 팔아요</h1>
     </header>
+
+    <nav>
+        <ul>
+            <li><a href="/">홈</a></li>
+            <li><a href="/">상품 목록</a></li>
+            <li><a href="/">장바구니</a></li>
+            <li style="float:right"><a>장바구니 합계 : <a id="total"></a></a></li>
+        </ul>
+    </nav>
+
     <main>
-        <div>
-            <ul>
-                <li>
-                    <div>
-                        <h2>상품 A</h2>
-                        <p>10000</p>
-                        <button id=test name="product" value=0 onclick="addCart(this)">장바구니담기</button>
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <h2>상품 B</h2>
-                        <p>20000</p>
-                        <button id=test name="product" value=1 onclick="addCart(this)">장바구니담기</button>
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <h2>상품 C</h2>
-                        <p>30000</p>
-                        <button id=test name="product" value=2 onclick="addCart(this)">장바구니담기</button>
-                    </div>
-                </li>
+        <section class="products">
+            <h2>상품 목록</h2>
+            <ul class="product-list" id="mainlist">
+
             </ul>
-        </div>
+        </section>
+
+        <hr>
+        <section class="products">
+            <h1 class="cart-name">장바구니 목록</h1>
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart fa-2x"></i>
+                <span class="cart-count"></span>
+            </div>
+
+
+            <ul class="cart-product-list" id="basket">
+
+            </ul>
+        </section>
     </main>
 
     <footer>
-        <hr>
-        <h2>장바구니 목록</h2>
-        <div>
-            <ul id="basket">
 
-            </ul>
-        </div>
     </footer>
 
 </body>
 
 <script>
     //------------상품 목록-------------
-    var nameList = ["상품A", "상품B", "상품C"];
-    var priceList = [10000, 20000, 30000];
+    var nameList = ["피카츄", "따라큐", "메타몽", "나오하"];
+    var priceList = [15000, 20000, 25000, 40000];
     display();
+    mainDisplay();
+
+
     //-------------장바구니 추가 기능------------
     function addCart(bt) {
         let temp = {
@@ -108,8 +308,59 @@
             },
             body: box,
         })
-            .then(console.log)
-            .finally(display());
+            .then(display());
+    }
+
+    //-------------장바구니 품목 마이너스----------
+    function minus(bt) {
+        let temp = {
+            number: parseInt(bt.dataset.value),
+        }
+        let box = JSON.stringify(temp);
+
+        fetch('/minus', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: box,
+        })
+            .then(display());
+    }
+
+    //-------------장바구니 품목 플러스----------
+    function plus(bt) {
+        let temp = {
+            number: parseInt(bt.dataset.value),
+        }
+        let box = JSON.stringify(temp);
+
+        fetch('/plus', {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: box,
+        })
+            .then(display());
+    }
+
+    //-------------상품 목록 랜더링 기능------------
+    function mainDisplay() {
+        let output = '';
+        for (let i = 0; i < nameList.length; i++) {
+            output += `
+                <li>
+                    <div class="product">
+                        <img src="${i}.png" alt="상품">
+                        <h3>${nameList[i]}</h3>
+                        <span class="price">${priceList[i]}</span>
+                        <button class="add-to-cart" name="product" value=${i} onclick="addCart(this)">장바구니담기</button>
+                    </div>
+                </li>
+                `
+        }
+        document.querySelector('#mainlist').innerHTML = output;
     }
 
     //-------------장바구니 목록 랜더링 기능--------
@@ -121,11 +372,17 @@
                 json.forEach(product => {
                     output += `
                 <li>
-                    <div>
-                        <h2>${product.name}</h2>
-                        <p>${product.price}</p>
-                        <p>${product.count}</p>
-                        <button id=test name="product" value=${product.number}
+                    <div class="cart-product">
+                        <h3>${product.name}</h2>
+                        <span class="price">${product.price}</span>
+                        <div class="cart-grid">
+                        <a class="minus-button" data-value=${product.number}
+                            onclick="minus(this)">-</a>
+                        <a class="count">${product.count} 개</a>
+                        <a class="plus-button" data-value=${product.number}
+                            onclick="plus(this)">+</a>
+                        </div>
+                        <button class="delete-to-cart" value=${product.number}
                             onclick="deleteCart(this)">삭제</button>
                     </div>
                 </li>
@@ -133,8 +390,39 @@
                 });
                 document.querySelector('#basket').innerHTML = output;
             })
+            .then(getCount())
+            .finally(getTotal())
             .catch(error => console.log(error));
     }
+
+
+
+    //------------총 합계 계산 기능-------------
+    function getTotal() {
+        fetch('/total')
+            .then(response => response.json())
+            .then(json => {
+                document.querySelector("#total").innerHTML = json.total;
+            })
+    }
+
+    //------------장바구니 아이콘 카운팅 기능------
+    function getCount() {
+        fetch('/count')
+            .then(response => response.json())
+            .then(json => {
+                let count = json.count;
+                if (count == 0) {
+                    document.querySelector(".cart-count").style.visibility = 'hidden';
+                }
+                else {
+                    document.querySelector(".cart-count").style.visibility = 'visible';
+                    document.querySelector(".cart-count").innerText = json.count;
+                }
+
+            })
+    }
+
 
 
 
