@@ -8,8 +8,6 @@ export default function News() {
     const [max, setMax] = useState(0);
     const [cs, setCs] = useState({ display: 'none' });
     const commentRef = useRef(null);
-    const [commentShowTrigger,setCT] = useState(false);
-    const commentShowRef = useRef(null);
 
     function rend() {
         let content = "";
@@ -39,12 +37,11 @@ export default function News() {
     }
 
     const handleCheckboxChange = (event) => {
-        setCT(event.target.checked);
-        // if (event.target.checked) {
-        //     setCs({ display: 'block' });
-        // } else {
-        //     setCs({ display: 'none' });
-        // }
+        if (event.target.checked) {
+            setCs({ display: 'block' });
+        } else {
+            setCs({ display: 'none' });
+        }
     };
 
     function unShow(no) {
@@ -64,9 +61,9 @@ export default function News() {
             </div>
             <p>댓글 보기</p>
             <input type="checkbox"
-                onChange={handleCheckboxChange} ref={commentShowRef}
+                onChange={handleCheckboxChange}
             ></input>
-            {commentShowTrigger && (<div className="comments-container" >
+            <div className="comments-container" style={cs}>
                 <ul>
                     {rend()}
                 </ul>
@@ -74,7 +71,7 @@ export default function News() {
                     <input type="text" placeholder="댓글 입력" ref={commentRef} />
                     <button onClick={enroll}>등록</button>
                 </div>
-            </div>)}
+            </div>
 
         </div>
     );

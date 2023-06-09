@@ -1,0 +1,17 @@
+react 라이브러리 모음
+
+시작
+npx  create-react-app  basic-react-app
+
+라우터
+npm install react-router-dom
+
+JSON서버 설치
+npm install -g  json-server
+
+JSON서버 가동
+(base) restapi-app % json-server --watch ./src/db/data.json
+
+3000포트를 쓰지 않으려면 
+
+(base) restapi-app % json-server --watch ./src/db/data.json --port 3003
