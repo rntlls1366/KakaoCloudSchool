@@ -1,0 +1,41 @@
+/* AddPost.css */
+.add-post-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+.add-post-container {
+    border: 2px solid blue;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.input-field-container {
+    margin-bottom: 10px;
+}
+
+.input-field {
+    height: 30px;
+    padding: 5px;
+}
+
+.textarea-field {
+    height: 200px;
+    width: 400px;
+    padding: 5px;
+    margin-bottom: 10px;
+    resize: vertical;
+}
+
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}

@@ -13,19 +13,27 @@ export default function Posts() {
             .then(data => (setPosts(data)))
 
     }, []);
+
+    function rend() {
+        const content = posts.map((post, index) => {
+            if (post.show === 0) {
+                return (
+                    <tr key={index}>
+                        <td>{post.id} </td><td><Link to={"/post/" + (post.id)}>{post.title}</Link></td>
+                    </tr>
+                )
+            }
+        }
+
+        )
+        return content;
+    }
     return (
         <div>
             <table>
                 <caption className="title"> 목록 </caption>
                 <tbody>
-                    {
-                        posts.map((post) => (
-                            <tr key={post.id}>
-                                <td>{post.id} </td><td><Link to={"/post/"+(post.id)}>{post.title}</Link></td>
-                            </tr>
-                        )
-                        )
-                    }
+                    {rend()}
                 </tbody>
             </table>
         </div>

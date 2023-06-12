@@ -1,22 +1,22 @@
-import logo from './logo.svg';
 import './App.css';
-import { dataDomain } from "./component/common";
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Posts from './component/Posts';
-import Post from './component/Post';
+
 
 function App() {
-  
+
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1>일단 헤더임</h1>
+        <h1>김준연 게시판</h1>
+        <Link to='/addpost' className="add-post-link">게시글 작성</Link>
       </header>
-        <Posts/>
+      <div className="Posts-container">
+        <Posts />
+      </div>
     </div>
-  )
+  );
 }
 
 export default App;
