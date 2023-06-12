@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.2.1/redux.js"></script>
+</head>
+
+<body>
+    <div class="data"> </div>
+    <script>
+        function reducer(state, action) {
+            if (state == undefined) {
+                return { cnt: 0 };
+            }
+            console.log(state, action);
+
+            if (action.type === "ADD_CNT") {
+                var oldcnt = state.cnt;
+                var newstate = { ...state, cnt: oldcnt + action.amount }
+                return newstate;
+            }
+            else if(action.type === "MULTUPLY_CNT") {
+                var oldcnt = state.cnt;
+                var newstate = {...state, cnt:oldcnt*action.amount}
+                return newstate;
+            }
+            else if(action.type === "MINUS_CNT") {
+                var oldcnt = state.cnt;
+                var newstate = {...state, cnt:oldcnt-action.amount}
+                return newstate;
+            }
+            else if(action.type === "DIVIDE_CNT") {
+                var oldcnt = state.cnt;
+                var newstate = {...state, cnt:oldcnt/action.amount}
+                return newstate;
+            }
+
+        }
+
+        var store = Redux.createStore(reducer);
+        console.log(store.getState());
+
+        function render() {
+            let state = store.getState();
+            document.querySelector(".data").innerHTML = `<h1>${state.cnt} </h1>`
+        }
+        render();
+
+        function addCnt() {
+            store.dispatch({ type: 'ADD_CNT', amount: parseInt(document.querySelector("#num").value )});
+        }
+        function multiplyCnt() {
+            store.dispatch({ type: 'MULTUPLY_CNT', amount: parseInt(document.querySelector("#num").value ) });
+        }
+        function minusCnt() {
+            store.dispatch({ type: 'MINUS_CNT', amount: parseInt(document.querySelector("#num").value ) });
+        }
+        function divideCnt() {
+            store.dispatch({ type: 'DIVIDE_CNT', amount: parseInt(document.querySelector("#num").value )});
+        }
+
+        store.subscribe(render);
+    </script>
+    <input type="text" id="num" name="num" value="">
+    <button onClick="addCnt();">더하기</button>
+    <button onClick="multiplyCnt()">곱하기</button>
+    <button onClick="minusCnt()">빼기</button>
+    <button onClick="divideCnt()">나누기</button>
+
+</body>
+
+</html>

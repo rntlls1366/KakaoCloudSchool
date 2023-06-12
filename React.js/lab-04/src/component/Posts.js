@@ -8,7 +8,7 @@ export default function Posts() {
 
     useEffect(() => {
 
-        fetch(`${dataDomain}/posts`)  // JSON-Server 에게 students data 요청
+        fetch(`${dataDomain}/posts`)
             .then(res => { return res.json() })
             .then(data => (setPosts(data)))
 

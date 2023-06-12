@@ -15,3 +15,7 @@ json-server --watch ./src/db/data.json
 3000포트를 쓰지 않으려면 
 
 json-server --watch ./src/db/data.json --port 3003
+
+redux toolkit 설치
+npm install react-redux
+npm install @reduxjs/toolkit
