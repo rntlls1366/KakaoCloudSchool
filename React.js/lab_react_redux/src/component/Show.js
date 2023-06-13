@@ -14,26 +14,17 @@ export default function Show(props) {
         }
         else if(point === -1) {
             setPoint(1);
-            dispatch({ type: 'correct', point: 2});
-        }
-        else {
-            setPoint(0);
-            dispatch({ type: 'correct', point: -1});
+            dispatch({ type: 'correct', point: 1});
         }
         
     }
     function uncorrect() {
         if(point === 0) {
             setPoint(-1);
-            dispatch({ type: 'uncorrect', point: -1});
         }
         else if(point === 1) {
             setPoint(-1);
-            dispatch({ type: 'uncorrect', point: -2});
-        }
-        else {
-            setPoint(0);
-            dispatch({ type: 'correct', point: 1});
+            dispatch({ type: 'uncorrect', point: -1});
         }
         
     }
