@@ -14,8 +14,8 @@ interface Drawable{
 } 
 //인터페이스가 인터페이스를 상속할 때 extends
 interface Drawable3D extends Drawable{  } 
-interface AA {} 
-class BB {}
+interface AAㅁ {} 
+class BBㅁ {}
 // interfact 상속할때는 implements 키워드 써야 함.
 abstract class Shape extends BB implements Drawable, AA{  }  // ..
 class Circle extends Shape {

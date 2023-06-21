@@ -1,8 +1,8 @@
 package day03;
-class Animal2{
+class Animal22{
     void move() { System.out.println("동물움직임");}
 }
-class Lion2 extends Animal2{
+class Lion2 extends Animal22{
     void move() { System.out.println("사자움직임");}
     void aaa() {}
 }
