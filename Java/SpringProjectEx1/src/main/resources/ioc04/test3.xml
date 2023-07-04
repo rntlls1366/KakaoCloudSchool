@@ -1,0 +1,11 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="beanFactory" class="ioc04.BeanFactory"></bean>
+    <bean id="userService3" class="ioc04.UserService3"
+          factory-method="getInstance"
+          factory-bean="beanFactory">
+    </bean>
+
+</beans>
